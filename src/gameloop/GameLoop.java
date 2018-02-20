@@ -1,8 +1,6 @@
 package gameloop;
 
 import javafx.application.Platform;
-import walkgame.Controller;
-import walkgame.View;
 
 public class GameLoop implements Runnable {
 

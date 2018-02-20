@@ -6,7 +6,7 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import walkgame.objects.Player;
 
-public class View
+public class View extends gameloop.View
 {
     public View(Main mainApp)
     {
@@ -20,11 +20,13 @@ public class View
 
 
 
+    @Override
     public void tick()
     {
         player.move();
     }
 
+    @Override
     public void render()
     {
         group = new Group(player);
