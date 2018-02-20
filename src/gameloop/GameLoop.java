@@ -2,15 +2,16 @@ package gameloop;
 
 import javafx.application.Platform;
 import walkgame.Controller;
+import walkgame.View;
 
 public class GameLoop implements Runnable {
 
-    public GameLoop(Controller controller)
+    public GameLoop(View view)
     {
-        this.controller = controller;
+        this.view = view;
     }
 
-    public Controller controller;
+    public View view;
 
     private boolean running = false;
     private Thread thread;
@@ -84,7 +85,7 @@ public class GameLoop implements Runnable {
         if (logicUpdate)//alleen renderen als er een update is geweest;
         {
             logicUpdate = false;
-            Platform.runLater(() -> controller.render());
+            Platform.runLater(() -> view.render());
         }
         else
         {
