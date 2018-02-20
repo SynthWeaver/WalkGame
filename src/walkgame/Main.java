@@ -35,19 +35,19 @@ public class Main extends Application {
         scene.setOnKeyPressed(event -> {
             switch (event.getCode()) {
                 case  W:
-                    view.player.setGoNorth(true);
+                    view.player.pressW();
                     GameLoop.logicUpdate = true;
                     break;
                 case D:
-                    view.player.setGoEast(true);
+                    view.player.pressD();
                     GameLoop.logicUpdate = true;
                     break;
                 case S:
-                    view.player.setGoSouth(true);
+                    view.player.pressS();
                     GameLoop.logicUpdate = true;
                     break;
                 case A:
-                    view.player.setGoWest(true);
+                    view.player.pressA();
                     GameLoop.logicUpdate = true;
                     break;
             }
@@ -55,10 +55,10 @@ public class Main extends Application {
 
         scene.setOnKeyReleased(event -> {
             switch (event.getCode()) {
-                case W:view.player.setGoNorth(false); break;
-                case D: view.player.setGoEast(false); break;
-                case S: view.player.setGoSouth(false); break;
-                case A: view.player.setGoWest(false); break;
+                case  W: view.player.releaseW(); break;
+                case D: view.player.releaseD(); break;
+                case S: view.player.releaseS(); break;
+                case A: view.player.releaseA(); break;
             }
         });
     }

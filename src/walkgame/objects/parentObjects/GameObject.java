@@ -36,10 +36,7 @@ public class GameObject extends ImageView
     private int id;
     protected String name;
     int health;
-    float speed;
-
-    boolean goNorth, goSouth, goEast, goWest;
-
+    double speed;
 
 
     public void setSprite(Image image)
@@ -59,7 +56,7 @@ public class GameObject extends ImageView
         return health;
     }
 
-    public float getSpeed()
+    public double getSpeed()
     {
         return speed;
     }

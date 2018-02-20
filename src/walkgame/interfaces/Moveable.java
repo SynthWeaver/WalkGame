@@ -2,14 +2,16 @@ package walkgame.interfaces;
 
 public interface Moveable
 {
-    void setX(float x);
-    void setY(float y);
-    void setSpeed(float speed);
+    void pressW();
+    void pressD();
+    void pressS();
+    void pressA();
+
+    void releaseW();
+    void releaseD();
+    void releaseS();
+    void releaseA();
 
     void move();
-
-    void setGoNorth(Boolean b);
-    void setGoEast(Boolean b);
-    void setGoSouth(Boolean b);
-    void setGoWest(Boolean b);
+    void setSpeed(double speed);
 }

@@ -1,85 +1,111 @@
 package walkgame.objects.parentObjects;
 
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import walkgame.interfaces.Destructible;
 import walkgame.interfaces.Moveable;
 
 public class Character extends GameObject implements Moveable, Destructible
 {
-    public Character(float x, float y, Image image, String name, int health, float speed)
+    public Character(double x, double y, Image image, String name, int health, float speed)
     {
         super(x, y, image, name, health, speed);
     }
 
-    @Override
-    public void setX(float x)
-    {
-        super.setX(x);
-    }
 
-    @Override
-    public void setY(float y)
-    {
-        super.setY(y);
-    }
+
+    private double velocityX = 0;
+    private double velocityY = 0;
+    private boolean goNorth, goSouth, goEast, goWest;
+
+
 
     @Override
     public void setHealth(int health)
     {
-        super.health = health;
-    }
-
-    @Override
-    public void setSpeed(float speed)
-    {
-        super.speed = speed;
+        this.health = health;
     }
 
     @Override
     public void move()
     {
-        double x = getX();
-        double y = getY();
-        if(goNorth)
+        if(!goNorth && !goEast && !goSouth && !goWest)
         {
-            setY(y - speed);
+            stopVelocity();
         }
-        if(goEast)
-        {
-            setX(x + speed);
-        }
-        if(goSouth)
-        {
-            setY(y + speed);
-        }
-        if(goWest)
-        {
-            setX(x - speed);
+        else{
+            double x = getX();
+            double y = getY();
+
+            super.setX(x + velocityX);
+            super.setY(y + velocityY);
         }
     }
 
-    @Override
-    public void setGoNorth(Boolean b)
+
+
+    private void setVelocityX(double velocity) {
+        this.velocityX = velocity;
+    }
+
+    private void setVelocityY(double velocity) {
+        this.velocityY = velocity;
+    }
+
+    private void stopVelocity()
     {
-        goNorth = b;
+        velocityX = 0;
+        velocityY = 0;
+    }
+
+
+
+    @Override
+    public void pressW() {
+        setVelocityY(0 - speed);
+        goNorth = true;
     }
 
     @Override
-    public void setGoEast(Boolean b)
-    {
-        goEast = b;
+    public void pressD() {
+        setVelocityX(speed);
+        goEast = true;
     }
 
     @Override
-    public void setGoSouth(Boolean b)
-    {
-        goSouth = b;
+    public void pressS() {
+        setVelocityY(speed);
+        goSouth = true;
     }
 
     @Override
-    public void setGoWest(Boolean b)
+    public void pressA() {
+        setVelocityX(0 - speed);
+        goWest = true;
+    }
+
+    @Override
+    public void releaseW() {
+        goNorth = false;
+    }
+
+    @Override
+    public void releaseD() {
+        goEast = false;
+    }
+
+    @Override
+    public void releaseS() {
+        goSouth = false;
+    }
+
+    @Override
+    public void releaseA() {
+        goWest = false;
+    }
+
+    @Override
+    public void setSpeed(double speed)
     {
-        goWest = b;
+        super.speed = speed;
     }
 }
