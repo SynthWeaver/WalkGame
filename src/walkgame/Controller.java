@@ -12,9 +12,12 @@ public class Controller{
     public Controller(View view)
     {
         this.view = view;
+        this.gameLoop = new GameLoop(view);
+        gameLoop.start();
     }
 
     View view;
+    public GameLoop gameLoop;
 
 
 

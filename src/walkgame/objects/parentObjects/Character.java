@@ -37,6 +37,29 @@ public class Character extends GameObject implements Moveable, Destructible
     }
 
     @Override
+    public void move()
+    {
+        double x = getX();
+        double y = getY();
+        if(goNorth)
+        {
+            setY(y - speed);
+        }
+        if(goEast)
+        {
+            setX(x + speed);
+        }
+        if(goSouth)
+        {
+            setY(y + speed);
+        }
+        if(goWest)
+        {
+            setX(x - speed);
+        }
+    }
+
+    @Override
     public void setGoNorth(Boolean b)
     {
         goNorth = b;

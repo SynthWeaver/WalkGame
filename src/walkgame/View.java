@@ -8,17 +8,26 @@ import walkgame.objects.Player;
 
 public class View
 {
-    public View()
+    public View(Main mainApp)
     {
-
+        this.mainApp = mainApp;
     }
 
-    Player player = new Player(0,0, new Image("walkgame/res/playerSouth.jpg"), "Jack", 100, 5);
+    Main mainApp;
+
+    Player player = new Player(0,0, "Jack");
     Group group = new Group(player);
 
 
+
+    public void tick()
+    {
+        player.move();
+    }
+
     public void render()
     {
-
+        group = new Group(player);
+        mainApp.loadStage( "WalkGame");
     }
 }

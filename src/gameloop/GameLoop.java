@@ -82,6 +82,7 @@ public class GameLoop implements Runnable {
 
     private void tick()
     {
+        Platform.runLater(() -> view.tick());
         if (logicUpdate)//alleen renderen als er een update is geweest;
         {
             logicUpdate = false;
