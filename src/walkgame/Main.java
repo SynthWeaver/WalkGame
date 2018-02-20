@@ -18,15 +18,14 @@ public class Main extends Application {
     private Scene scene;
     private View view = new View(this);
     private Controller controller = new Controller(view);
+    public GameLoop gameLoop = new GameLoop(view);
 
     @Override
-    public void start(Stage stage) throws Exception{
-        /*Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root, 300, 300));*/
-
+    public void start(Stage stage){
         primaryStage = stage;
+        gameLoop.start();
         loadStage("WalkGame");
+        primaryStage.show();
     }
 
     private void loadScene()
@@ -69,7 +68,6 @@ public class Main extends Application {
         primaryStage.setTitle(name);
         loadScene();
         primaryStage.setScene(scene);
-        primaryStage.show();
     }
 
 
