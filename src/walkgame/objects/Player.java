@@ -30,4 +30,48 @@ public class Player extends Character implements Controllable
     {
         super.name = name;
     }
+
+    @Override
+    public void pressW() {
+        setVelocityY(0 - getSpeed());
+        goNorth = true;
+    }
+
+    @Override
+    public void pressD() {
+        setVelocityX(getSpeed());
+        goEast = true;
+    }
+
+    @Override
+    public void pressS() {
+        setVelocityY(getSpeed());
+        goSouth = true;
+    }
+
+    @Override
+    public void pressA() {
+        setVelocityX(0 - getSpeed());
+        goWest = true;
+    }
+
+    @Override
+    public void releaseW() {
+        goNorth = false;
+    }
+
+    @Override
+    public void releaseD() {
+        goEast = false;
+    }
+
+    @Override
+    public void releaseS() {
+        goSouth = false;
+    }
+
+    @Override
+    public void releaseA() {
+        goWest = false;
+    }
 }

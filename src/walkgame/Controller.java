@@ -20,7 +20,7 @@ public class Controller{
         Scene scene = view.scene;
         Player player = view.player;
 
-        scene.setOnKeyPressed(event -> {//todo: naar controller
+        scene.setOnKeyPressed(event -> {
             switch (event.getCode()) {
                 case  W:
                     player.pressW();
