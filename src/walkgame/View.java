@@ -1,22 +1,25 @@
 package walkgame;
 
+import gameloop.GameLoop;
 import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
-import javafx.stage.Stage;
 import walkgame.objects.Player;
 
 public class View extends gameloop.View
 {
-    public View(Main mainApp)
+    public static int APP_WIDTH = 300;
+    public static int APP_HEIGHT = 300;
+
+    public View()
     {
-        this.mainApp = mainApp;
+        group = new Group(player);
+        scene = new Scene(group, View.APP_WIDTH, View.APP_HEIGHT);
     }
 
-    Main mainApp;
+    public Group group;
+    public Scene scene;
 
-    Player player = new Player(0,0, "Jack");
-    Group group = new Group(player);
+    public Player player = new Player(0,0, "Jack");
 
 
 
@@ -30,6 +33,18 @@ public class View extends gameloop.View
     public void render()
     {
         group = new Group(player);
-        mainApp.loadStage( "WalkGame");
+        scene.setRoot(group);
+        //focusCam();
+    }
+
+    private void focusCam()
+    {
+        double imgHeight = player.getImage().getHeight();
+        double imgWidth = player.getImage().getWidth();
+
+        double playerCenter = (imgHeight + imgWidth) / 2f;
+        double viewCenter =(APP_HEIGHT + APP_WIDTH) /2f;
+
+
     }
 }

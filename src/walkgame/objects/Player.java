@@ -7,9 +7,9 @@ import walkgame.objects.parentObjects.Character;
 public class Player extends Character implements Controllable
 {
     private static final int PLAYER_HEALTH = 100;
-    private static final int PLAYER_SPEED = 2;
+    private static final double PLAYER_SPEED = 1.5;
 
-    public Player(double x, double y, Image image, String name, int health, float speed)
+    public Player(double x, double y, Image image, String name, int health, double speed)
     {
         super(x, y, image, name, health, speed);
     }

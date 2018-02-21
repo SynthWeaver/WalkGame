@@ -6,7 +6,7 @@ import walkgame.interfaces.Moveable;
 
 public class Character extends GameObject implements Moveable, Destructible
 {
-    public Character(double x, double y, Image image, String name, int health, float speed)
+    public Character(double x, double y, Image image, String name, int health, double speed)
     {
         super(x, y, image, name, health, speed);
     }

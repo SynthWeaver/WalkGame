@@ -23,7 +23,7 @@ public class GameObject extends ImageView
         this.speed = 0;
     }
 
-    public GameObject(double x, double y, Image image, String name, int health, float speed)
+    public GameObject(double x, double y, Image image, String name, int health, double speed)
     {
         this(x, y, image);
 
