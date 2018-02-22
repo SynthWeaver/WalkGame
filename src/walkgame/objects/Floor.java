@@ -33,11 +33,13 @@ public class Floor extends GameObject implements Controllable, Moveable
             velocityX = 0;
         }
 
-        double x = getX();
-        double y = getY();
+        if(velocityX != 0 || velocityY != 0 ) {
+            double x = getX();
+            double y = getY();
 
-        super.setX(x + velocityX);
-        super.setY(y + velocityY);
+            super.setX(x + velocityX);
+            super.setY(y + velocityY);
+        }
     }
 
 

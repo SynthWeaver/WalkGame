@@ -50,7 +50,9 @@ public class Character extends GameObject implements Moveable, Destructible
     @Override
     public void move()
     {
-        rotateImage();
+        if(goNorth || goEast || goSouth || goWest) {
+            rotateImage();
+        }
 
         if(!goNorth && !goSouth)
         {
@@ -61,11 +63,13 @@ public class Character extends GameObject implements Moveable, Destructible
             velocityX = 0;
         }
 
-        double x = getX();
-        double y = getY();
+        if(velocityX != 0 && velocityY != 0 ) {
+            double x = getX();
+            double y = getY();
 
-        super.setX(x + velocityX);
-        super.setY(y + velocityY);
+            super.setX(x + velocityX);
+            super.setY(y + velocityY);
+        }
     }
 
     @Override

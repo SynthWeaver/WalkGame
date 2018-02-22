@@ -34,7 +34,7 @@ public class Player extends Character implements Controllable, Nameable {
     @Override
     public void pressButton(KeyCode c) {
         switch (c){
-            case K:
+            case W:
                 goNorth = true;
                 goSouth = false;
                 break;
