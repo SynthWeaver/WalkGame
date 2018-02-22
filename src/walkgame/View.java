@@ -1,25 +1,35 @@
 package walkgame;
 
-import gameloop.GameLoop;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.image.Image;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
+import javafx.stage.Stage;
+import walkgame.objects.Floor;
 import walkgame.objects.Player;
+import walkgame.objects.parentObjects.GameObject;
 
 public class View extends gameloop.View
 {
-    public static int APP_WIDTH = 300;
-    public static int APP_HEIGHT = 300;
+    public static double SCREEN_WIDTH = 300;
+    public static double SCREEN_HEIGHT = 300;
+    public static double GAME_WIDTH = 400;
+    public static double GAME_HEIGHT = 400;
 
-    public View()
+    public View(Stage primaryStage)
     {
-        group = new Group(player);
-        scene = new Scene(group, View.APP_WIDTH, View.APP_HEIGHT);
+        new Floor(player.getX(), player.getY(), new Image("walkgame/res/floor1.png"));
+        root = makeRoot();
+        scene = new Scene(root, View.SCREEN_WIDTH, View.SCREEN_HEIGHT, Color.BLACK);
+        this.primaryStage = primaryStage;
     }
 
-    public Group group;
+    public Player player = new Player(View.SCREEN_WIDTH / 2f,View.SCREEN_HEIGHT / 2f, "Jack");
+    public Group root;
     public Scene scene;
-
-    public Player player = new Player(0,0, "Jack");
+    public Stage primaryStage;
 
 
 
@@ -27,24 +37,23 @@ public class View extends gameloop.View
     public void tick()
     {
         player.move();
+        for (Floor floor : Floor.floorList)
+        {
+            floor.move();
+        }
     }
 
     @Override
     public void render()
     {
-        group = new Group(player);
-        scene.setRoot(group);
-        //focusCam();
+        root = makeRoot();
+        scene.setRoot(root);
     }
 
-    private void focusCam()
+    private Group makeRoot()
     {
-        double imgHeight = player.getImage().getHeight();
-        double imgWidth = player.getImage().getWidth();
-
-        double playerCenter = (imgHeight + imgWidth) / 2f;
-        double viewCenter =(APP_HEIGHT + APP_WIDTH) /2f;
-
-
+        AnchorPane map = new AnchorPane(Floor.floorList.get(0));
+        map.setMinSize(GAME_WIDTH,GAME_HEIGHT);
+        return new Group(map, player);
     }
 }

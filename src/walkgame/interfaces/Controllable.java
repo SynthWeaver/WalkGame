@@ -1,16 +1,9 @@
 package walkgame.interfaces;
 
-public interface Controllable extends Moveable
+import javafx.scene.input.KeyCode;
+
+public interface Controllable
 {
-    void pressW();
-    void pressD();
-    void pressS();
-    void pressA();
-
-    void releaseW();
-    void releaseD();
-    void releaseS();
-    void releaseA();
-
-    void setName(String name);
+    void pressButton(KeyCode c);
+    void releaseButton(KeyCode c);
 }
