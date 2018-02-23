@@ -14,7 +14,7 @@ import walkgame.objects.microObjects.Coordinate;
 public class View extends gameloop.View
 {
     private Controller controller;
-    private Player player;
+    public Player player;
 
     private Group root;
     public Scene scene;
