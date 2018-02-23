@@ -9,43 +9,52 @@ import walkgame.interfaces.Controllable;
 import walkgame.objects.Floor;
 import walkgame.objects.Player;
 
-public class Controller{
-
-    public Controller(View view) {
-        this.view = view;
-        setKeyEvents();
-    }
+public class Controller extends gameloop.Controller{
 
     View view;
 
-    private void setKeyEvents()
+
+
+    public Controller(View view) {
+        this.view = view;
+    }
+
+
+
+    public void pressButton(KeyCode k)
     {
-        Scene scene = view.scene;
-        Player player = view.player;
+        GameLoop.logicUpdate = true;
+        view.player.pressButton(k);
+        for(Floor f : Floor.floorList)
+        {
+            f.pressButton(k);
+        }
+    }
 
-        scene.setOnKeyPressed(event -> {
-            KeyCode c = event.getCode();
-            if(c == KeyCode.W || c == KeyCode.D || c == KeyCode.S || c == KeyCode.A)
-            {
-                GameLoop.logicUpdate = true;
-                player.pressButton(c);
-                for(Floor f : Floor.floorList)
-                {
-                    f.pressButton(c);
-                }
-            }
-        });
+    public void releaseButton(KeyCode k)
+    {
+        view.player.releaseButton(k);
+        for(Floor f : Floor.floorList)
+        {
+            f.releaseButton(k);
+        }
+    }
 
-        scene.setOnKeyReleased(event -> {
-            KeyCode c = event.getCode();
-            if(c == KeyCode.W || c == KeyCode.D || c == KeyCode.S || c == KeyCode.A)
-            {
-                player.releaseButton(c);
-                for(Floor f : Floor.floorList)
-                {
-                    f.releaseButton(c);
-                }
-            }
-        });
+
+
+    @Override
+    public void tick()
+    {
+        view.player.move();
+        for (Floor floor : Floor.floorList)
+        {
+            floor.move();
+        }
+    }
+
+    @Override
+    public void render()
+    {
+        view.render();
     }
 }

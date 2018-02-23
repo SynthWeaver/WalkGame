@@ -1,11 +1,7 @@
 package gameloop;
 
-public class View {
-    public void tick()
-    {
-
-    }
-
+public class View
+{
     public void render()
     {
 
