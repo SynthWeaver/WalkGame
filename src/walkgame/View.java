@@ -6,6 +6,7 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import walkgame.objects.Floor;
@@ -48,7 +49,11 @@ public class View extends gameloop.View
 
     private Group createRoot()
     {
-        AnchorPane map = new AnchorPane(Floor.floorList.get(0));
+        Pane map = new Pane();
+        for (Floor f : Floor.floorList) {
+            map.getChildren().add(f);
+        }
+
         map.setMinSize(GAME_WIDTH,GAME_HEIGHT);
         return new Group(map, player);
     }
