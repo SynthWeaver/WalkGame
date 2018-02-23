@@ -2,7 +2,9 @@ package walkgame.objects;
 
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
+import walkgame.View;
 import walkgame.interfaces.*;
+import walkgame.objects.microObjects.Coordinate;
 import walkgame.objects.parentObjects.Character;
 
 public class Player extends Character implements Controllable, Nameable {
@@ -10,19 +12,29 @@ public class Player extends Character implements Controllable, Nameable {
     private static final int PLAYER_HEALTH = 100;
     private static final double PLAYER_SPEED = 0;
 
-    public Player(double x, double y, Image image, String name)
+    public Player(double centerX, double centerY, Image image, String name)
     {
-        super(x - (image.getWidth() / 2f), y - (image.getWidth() / 2f), image, PLAYER_HEALTH, PLAYER_SPEED);
+        super(centerX - (image.getWidth() / 2f), centerY - (image.getWidth() / 2f), image, PLAYER_HEALTH, PLAYER_SPEED);
         this.name = name;
     }
 
-    public Player(double x, double y, String name)
+    public Player(Coordinate center, Image image, String name)
     {
-        this(x , y, new Image("walkgame/res/playerSouth.jpg"), name);
+        super(center.getX() - (image.getWidth() / 2f), center.getY() - (image.getWidth() / 2f), image, PLAYER_HEALTH, PLAYER_SPEED);
+        this.name = name;
+    }
+
+    public Player(double centerX, double centerY, String name)
+    {
+        this(centerX , centerY, new Image("walkgame/res/playerSouth.jpg"), name);
+    }
+
+    public Player(Coordinate center, String name)
+    {
+        this(center, new Image("walkgame/res/playerSouth.jpg"), name);
     }
 
     private String name;
-
 
 
     @Override
