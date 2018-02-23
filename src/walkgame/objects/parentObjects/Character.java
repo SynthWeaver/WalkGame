@@ -1,6 +1,5 @@
 package walkgame.objects.parentObjects;
 
-import gameloop.GameLoop;
 import javafx.scene.image.Image;
 import walkgame.interfaces.Destructible;
 import walkgame.interfaces.Moveable;

@@ -24,8 +24,6 @@ public class View extends gameloop.View
     public Scene scene;
     public Stage primaryStage;
 
-
-
     public View(Stage primaryStage)
     {
         controller = new Controller(this);
