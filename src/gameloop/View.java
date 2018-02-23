@@ -1,9 +1,6 @@
 package gameloop;
 
-public class View
+public abstract class View
 {
-    public void render()
-    {
-
-    }
+    public abstract void render();
 }

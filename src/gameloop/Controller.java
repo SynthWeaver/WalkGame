@@ -1,13 +1,7 @@
 package gameloop;
 
-public class Controller {
-    public void render()
-    {
+public abstract class Controller {
+    public abstract void render();
 
-    }
-
-    public void tick()
-    {
-
-    }
+    public abstract void tick();
 }
