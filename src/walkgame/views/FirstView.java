@@ -1,5 +1,6 @@
-package walkgame;
+package walkgame.views;
 
+import walkgame.controllers.FirstController;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -11,9 +12,9 @@ import walkgame.objects.Floor;
 import walkgame.objects.Player;
 import walkgame.objects.microObjects.Coordinate;
 
-public class View extends gameloop.View
+public class FirstView extends View
 {
-    private Controller controller;
+    private FirstController firstController;
     public Player player;
 
     private Group root;
@@ -24,9 +25,9 @@ public class View extends gameloop.View
     private Coordinate gameSize = new Coordinate(400, 400);
     public static Coordinate screenCenter = new Coordinate(screenSize.getX() / 2f, screenSize.getY() / 2f);
 
-    public View(Stage primaryStage)
+    public FirstView(Stage primaryStage)
     {
-        controller = new Controller(this);
+        firstController = new FirstController(this);
         player = new Player(screenCenter, "Jack");
 
         createFloor();
@@ -52,7 +53,8 @@ public class View extends gameloop.View
         new Floor(Floor.floorList.get(0).getX() + new Image("walkgame/res/floor1.png").getWidth(), player.getY(), new Image("walkgame/res/floor1.png"));
     }
 
-    private void createRoot()
+    @Override
+    protected void createRoot()
     {
         Pane map = new Pane();
         for (Floor f : Floor.floorList) {
@@ -63,15 +65,16 @@ public class View extends gameloop.View
         root = new Group(map, player);
     }
 
-    private void createScene()
+    @Override
+    protected void createScene()
     {
-        scene = new Scene(root, View.screenSize.getX(), View.screenSize.getY(), Color.BLACK);
+        scene = new Scene(root, FirstView.screenSize.getX(), FirstView.screenSize.getY(), Color.BLACK);
 
         scene.setOnKeyPressed(event -> {
             KeyCode k = event.getCode();
             if(k == KeyCode.W || k == KeyCode.D || k == KeyCode.S || k == KeyCode.A)
             {
-                controller.pressButton(k);
+                firstController.pressButton(k);
             }
         });
 
@@ -79,7 +82,7 @@ public class View extends gameloop.View
             KeyCode k = event.getCode();
             if(k == KeyCode.W || k == KeyCode.D || k == KeyCode.S || k == KeyCode.A)
             {
-                controller.releaseButton(k);
+                firstController.releaseButton(k);
             }
         });
     }

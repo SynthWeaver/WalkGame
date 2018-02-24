@@ -2,10 +2,9 @@ package walkgame.objects;
 
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
-import walkgame.View;
-import walkgame.interfaces.*;
 import walkgame.objects.microObjects.Coordinate;
 import walkgame.objects.parentObjects.Character;
+import walkgame.interfaces.*;
 
 public class Player extends Character implements Controllable, Nameable {
 

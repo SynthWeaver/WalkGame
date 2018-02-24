@@ -1,8 +1,7 @@
 package walkgame.objects.parentObjects;
 
 import javafx.scene.image.Image;
-import walkgame.interfaces.Destructible;
-import walkgame.interfaces.Moveable;
+import walkgame.interfaces.*;
 
 public class Character extends GameObject implements Moveable, Destructible
 {
